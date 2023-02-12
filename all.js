@@ -3,6 +3,7 @@ let play_loc = document.querySelectorAll(".play_loc");
 let play_loc_all = document.querySelectorAll(".play_loc,.play_loc_none");
 let true_loc = document.querySelectorAll(".true_loc");
 
+alert("將數字按照順序排好吧!")
 /* 重置按紐 */
 function change(){
     let num = [];
@@ -20,9 +21,8 @@ function change(){
 }
 change()
 reset.addEventListener("click",change);
-
 /* 陣列排位置 */
-let local = [[0,0],[0,200],[0,400],[200,0],[200,200],[200,400],[400,0],[400,200],[400,400]]
+let local = [[0,0],[0,200],[0,400],[200,0],[200,200],[200,400],[400,0],[400,200],[400,400]];
 function run(){
     true_loc.forEach((v,i)=>{
         v.style.top=local[i][0]+"px";
@@ -30,8 +30,7 @@ function run(){
     })
 }
 run();
-
-/* 判斷是否可去 */
+/* 位置更換 */
 let cango = [[1,3],[0,2,4],[1,5],[0,4,6],[1,3,5,7],[2,4,8],[3,7],[4,6,8],[5,7]];
 let cal = [];
 let checksum = [];
@@ -54,12 +53,12 @@ play_loc_all.forEach(v=>{
             checksum=[];
             play_loc_all.forEach(v=>{
                 v.classList.remove("active");
-            })
+            });
         }
         play_loc.forEach((v,i)=>{
             left.push(v.innerText)
             right.push(parseInt(true_loc[i].getAttribute("data-loc"))+1)
-        })
+        });
         if(left.join("")!=right.join("")){
             left=[];
             right=[];
@@ -71,17 +70,16 @@ play_loc_all.forEach(v=>{
                 alert("恭喜完成");
                 play_loc.forEach(v=>{
                     v.classList.remove("active");
-                })
+                });
                 change();
             },500);
         }
-    })
-})
-
+    });
+});
+/* 判斷是否可移動 */
 function check(first,second,checksumf,checksums){
     if(cango[first].indexOf(parseInt(second))==-1){
         alert("不能偷吃步!");
-        return
     }else if(checksums!=8){
         alert("無法移動");
     }else{
@@ -91,53 +89,3 @@ function check(first,second,checksumf,checksums){
         run();
     }
 }
- 
-
-
-
-
-// let downpageX,downpageY,uppageX,uppageY=0;
-
-// function mousedown(e){
-//     let x = e.target.parentElement.offsetLeft;
-//     let y = e.target.parentElement.offsetTop;
-//     downpageX = e.pageX;
-//     play_loc.forEach(v=>{
-//         v.addEventListener("mousemove",mousemove(e,v));
-//     })
-// }
-// function mouseup(e){
-//     uppageX += e.pageX - downpageX;
-//     play_loc.forEach(v=>{
-//         v.removeEventListener("mousemove",mousemove(e,v));
-//     })
-// }
-// function mousemove(e,v){
-//     let a = e.pageX - uppageX;
-//     play_loc.forEach(v=>{
-//         v.style.transform="translateX("+a+"px)";
-//     });
-// }
-
-// play_loc.forEach(v=>{
-//     v.addEventListener("mousedown",mousedown);
-//     v.addEventListener("mouseup",mouseup);
-// })
-
-
-
-// play_loc.forEach(v=>{
-//     v.setAttribute("draggable","true");
-//     v.addEventListener("dragstart",()=>{
-//         play_loc.forEach(v=>{
-//             // v.setAttribute("draggable","false");
-//         })
-//         v.setAttribute("draggable","true");
-//         v.classList.add("hold");
-//     });
-// })
-// true_loc.forEach(v=>{
-//     v.addEventListener("drop",()=>{
-//         v.append(play_loc)
-//     });
-// })
