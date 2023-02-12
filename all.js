@@ -3,7 +3,7 @@ let play_loc = document.querySelectorAll(".play_loc");
 let play_loc_all = document.querySelectorAll(".play_loc,.play_loc_none");
 let true_loc = document.querySelectorAll(".true_loc");
 
-alert("將數字按照順序排好吧!")
+alert("將貓貓拼好吧!");
 /* 重置按紐 */
 function change(){
     let num = [];
@@ -16,7 +16,8 @@ function change(){
         }
     }
     play_loc.forEach((x,i)=>{
-        x.innerText = num[i]
+        x.style.backgroundImage=`url('./images/${num[i]}.jpg')`;
+        x.innerText = num[i];
     });
 }
 change()
@@ -67,7 +68,7 @@ play_loc_all.forEach(v=>{
                 v.classList.add("active");
             })
             setTimeout(()=>{
-                alert("恭喜完成");
+                alert("恭喜貓咪");
                 play_loc.forEach(v=>{
                     v.classList.remove("active");
                 });
