@@ -3,7 +3,7 @@ let play_loc = document.querySelectorAll(".play_loc");
 let play_loc_all = document.querySelectorAll(".play_loc,.play_loc_none");
 let true_loc = document.querySelectorAll(".true_loc");
 
-alert("將貓貓拼好吧!");
+alert("點擊圖片將貓貓拼好吧!");
 /* 重置按紐 */
 function change(){
     let num = [];
