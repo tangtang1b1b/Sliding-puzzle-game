@@ -79,9 +79,9 @@ play_loc_all.forEach(v=>{
 });
 /* 判斷是否可移動 */
 function check(first,second,checksumf,checksums){
-    if(cango[first].indexOf(parseInt(second))==-1){
+    if(cango[first].indexOf(parseInt(second))==-1 && first != second){
         alert("不能偷吃步!");
-    }else if(checksums!=8){
+    }else if(checksums!=8 && first != second){
         alert("無法移動");
     }else{
         true_loc[checksums].setAttribute("data-loc",first);
